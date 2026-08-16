@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#17233d" />
+    <meta name="description" content="校園社團爭預算：八週經營社團、寫企劃搶場地，用成果贏得期末預算。" />
+    <title>校園社團爭預算</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="campus-bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <main>
+      <header class="topbar">
+        <div><p class="eyebrow">社辦燈還亮著</p><h1>校園社團爭預算</h1></div>
+        <button id="sound-toggle" class="round-button" type="button" aria-pressed="true">♫ 音樂開</button>
+      </header>
+
+      <section id="lobby" class="panel lobby">
+        <div class="notice-tape">學生事務處公告 · 本學期預算競賽開始</div>
+        <img class="hero-emote" src="./assets/images/idea.png" alt="" />
+        <p class="kicker">8 週 · 4 社團 · 1 份年度預算</p>
+        <h2>不只會寫企劃，還得真的辦成</h2>
+        <p class="intro">每週只有 3 點幹部工時。招人、練習、籌備、寫提案、顧器材都想做；熱門場地卻只有一個。期末四項評鑑，任何短板都會封頂。</p>
+        <label class="name-field" for="club-name">替你的社團掛牌
+          <input id="club-name" maxlength="14" value="放學後研究社" autocomplete="off" />
+        </label>
+        <div class="lobby-stats">
+          <div><img src="./assets/images/leaderboard.png" alt="" /><span>最佳評鑑</span><strong id="best-score">0</strong></div>
+          <div><img src="./assets/images/trophy.png" alt="" /><span>已解鎖徽章</span><strong id="unlock-count">0 / 4</strong></div>
+        </div>
+        <button id="start-button" class="primary big" type="button">接下社長印章！</button>
+      </section>
+
+      <section id="game" class="game" hidden>
+        <div class="hud" aria-label="社團狀態">
+          <div><span>週次</span><strong id="week-value">1 / 8</strong></div>
+          <div><span>預算</span><strong id="budget-value">$68</strong></div>
+          <div><span>社員</span><strong id="members-value">18 人</strong></div>
+          <div><span>聲望</span><strong id="prestige-value">4.0</strong></div>
+          <div><span>器材</span><strong id="gear-value">6.0</strong></div>
+          <div><span>安全</span><strong id="safety-value">6.0</strong></div>
+        </div>
+
+        <section id="week-event" class="week-event panel" aria-live="polite"></section>
+
+        <section class="campus panel" aria-label="社團競爭狀態">
+          <div class="campus-title"><span>場地申請佈告欄</span><small>企劃品質＋社團聲望決勝</small></div>
+          <div id="club-grid" class="club-grid"></div>
+        </section>
+
+        <section class="planner panel">
+          <div class="planner-heading">
+            <div><p class="kicker">本週幹部會議</p><h2>3 點工時怎麼花？</h2></div>
+            <strong id="points-left" class="points">剩 3 點</strong>
+          </div>
+          <div id="work-grid" class="work-grid"></div>
+
+          <fieldset>
+            <legend>① 密封申請場地 <small>不是出價；比聲望與企劃</small></legend>
+            <div id="venue-picker" class="choice-grid venue-grid"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>② 本週活動內容</legend>
+            <div id="event-picker" class="segments"></div>
+          </fieldset>
+
+          <label class="backup-toggle">
+            <input id="use-secondary" type="checkbox" checked />
+            <span><strong>落選就接受備選場地</strong><small>場地契合較差，但總比活動取消好</small></span>
+          </label>
+          <p id="plan-message" class="plan-message" role="status"></p>
+          <button id="resolve-button" class="primary big" type="button" disabled>蓋章送件，開始本週！</button>
+        </section>
+      </section>
+
+      <section id="result-sheet" class="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div class="sheet-card">
+          <img id="result-emote" class="result-emote" src="./assets/images/happy.png" alt="" />
+          <p id="result-kicker" class="kicker"></p>
+          <h2 id="result-title"></h2>
+          <div id="result-content"></div>
+          <button id="continue-button" class="primary big" type="button"></button>
+        </div>
+      </section>
+
+      <footer>
+        <button id="how-button" class="text-button" type="button">玩法、評鑑與素材</button>
+        <span>Playgrounds · Sampot</span>
+      </footer>
+    </main>
+
+    <section id="about-sheet" class="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="about-title">
+      <div class="sheet-card about-card">
+        <h2 id="about-title">學生事務處說明會</h2>
+        <ol>
+          <li>每週分配剛好 3 點工時，再密封申請場地；申請看聲望與企劃品質，不花錢競標。</li>
+          <li>活動成功由籌備、練習、場地契合、當週事件、安全與固定種子共同決定。</li>
+          <li>社員以整體興趣與滿意度流動，不是角色養成。招募能拉人，翻車也會掉人。</li>
+          <li>期末依參與、成果、財務、安全加權；任一項低於 3 分，總評最高 49。</li>
+        </ol>
+        <p>美術、音效、音樂與字型來源見 <a href="./ATTRIBUTION.md">ATTRIBUTION.md</a>。</p>
+        <button id="about-close" class="primary big" type="button">了解，散會！</button>
+      </div>
+    </section>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
